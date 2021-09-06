@@ -1,0 +1,215 @@
+$ruler: 3vh;
+$color-red: #ae1100;
+$color-bg: #ebecf0;
+$color-shadow: #babecc;
+$color-white: #fff;
+// $color-place: #ae1100c2;
+
+body,
+html {
+  background-color: $color-bg;
+}
+
+body,
+p,
+input,
+select,
+textarea,
+button {
+  font-family: 'Tajawal';
+  letter-spacing: -0.2px;
+  font-size: $ruler;
+}
+/*
+::-webkit-input-placeholder {
+Edge
+  color: $color-place;
+}
+
+:-ms-input-placeholder {
+Internet Explorer 10-11 
+  color: $color-place;
+}
+
+::placeholder {
+  color: $color-place;
+}
+*/
+
+div,
+p {
+  color: $color-shadow;
+  text-shadow: 1px 1px 1px $color-white;
+}
+
+form {
+  position: relative;
+  padding: $ruler;
+  width: $ruler * 14;
+  margin: 0 auto;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+.segment {
+  font-size: 1.1em;
+  text-align: center;
+  h1 {
+    margin-top: 0;
+  }
+}
+
+button,
+input {
+  text-align: center;
+  font-weight: bolder;
+  border: 0;
+  outline: 0;
+  font-size: 1.2em;
+  border-radius: $ruler * 20;
+  padding: $ruler;
+  background-color: $color-bg;
+  text-shadow: 1px 1px 0 $color-white;
+}
+
+label {
+  display: block;
+  margin-bottom: $ruler * 1;
+  width: 100%;
+}
+
+input {
+  margin-right: $ruler/2;
+  box-shadow: inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    box-shadow: inset 1px 1px 2px $color-shadow,
+      inset -1px -1px 2px $color-white;
+  }
+}
+
+button {
+  color: #61677c;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1em;
+
+  &:hover {
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px 2px $color-shadow,
+      inset -1px -1px 2px $color-white;
+  }
+
+  &.unit {
+    border-radius: $ruler/2;
+    line-height: 0;
+    width: $ruler * 3;
+    height: $ruler * 3;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 $ruler/2;
+    font-size: $ruler * 1.2;
+  }
+
+  &.black {
+    display: block;
+    width: 100%;
+    color: #747474;
+  }
+  &.red {
+    display: block;
+    width: 100%;
+    color: $color-red;
+  }
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  label {
+    margin: 0;
+    flex: 1;
+  }
+}
+
+.red {
+  color: $color-red;
+}
+
+/*Simple css to style it like a toggle switch
+.theme-switch-wrapper {
+  margin: 0;
+  position: absolute;
+  left: 40%;
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: '';
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+*/
