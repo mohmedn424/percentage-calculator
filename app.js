@@ -2,7 +2,9 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('/sw.js')
     .then((reg) => console.log('service worker registered', reg))
-    .catch((err) => console.log('service worker not registered', err));
+    .catch((err) =>
+      console.log('service worker not registered', err)
+    );
 }
 
 //Getting Dom Elements
@@ -11,6 +13,7 @@ let percent = document.getElementById('percent'),
   calcBt = document.getElementById('calcBt'),
   agentResult = document.getElementById('agentResult'),
   deleteBt = document.getElementById('deleteBt'),
+  form = document.getElementById('calc-form'),
   exchangeAmount = document.getElementById('exchangeAmount');
 
 //make focus on percent fo faster interact
@@ -33,7 +36,10 @@ calcBt.addEventListener('click', () => {
   calc();
 });
 
-deleteBt.addEventListener('click', () => percent.focus());
+deleteBt.addEventListener('click', () => {
+  percent.focus();
+  form.reset();
+});
 
 document.addEventListener('keypress', function (event) {
   if (event.keyCode == 13) {

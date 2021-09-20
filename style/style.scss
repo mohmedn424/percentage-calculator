@@ -1,215 +1,347 @@
-$ruler: 3vh;
-$color-red: #ae1100;
-$color-bg: #ebecf0;
-$color-shadow: #babecc;
-$color-white: #fff;
-// $color-place: #ae1100c2;
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
 
-body,
+$ruler: 3vh;
 html {
-  background-color: $color-bg;
+  --color-red: #ae1100;
+  --color-bg: #ebecf0;
+  --color-shadow: #babecc;
+  --color-white: #ffffff;
+  --padding: 25px;
+}
+html[data-theme='dark'] {
+  --color-red: #13cfbc;
+  --color-bg: #1a1a1a;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-white: #1a1a1a;
+  --font-color: white;
+}
+
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body,
 p,
 input,
-select,
-textarea,
 button {
   font-family: 'Tajawal';
-  letter-spacing: -0.2px;
+  color: var(--font-color);
   font-size: $ruler;
 }
-/*
-::-webkit-input-placeholder {
-Edge
-  color: $color-place;
+body {
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }
 
-:-ms-input-placeholder {
-Internet Explorer 10-11 
-  color: $color-place;
-}
-
-::placeholder {
-  color: $color-place;
-}
-*/
-
-div,
-p {
-  color: $color-shadow;
-  text-shadow: 1px 1px 1px $color-white;
-}
-
-form {
-  position: relative;
+.calc-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: $ruler;
   width: $ruler * 12.8;
-  margin: 0 auto;
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+
+  button,
+  input {
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bolder;
+    border: 0;
+    outline: 0;
+    font-size: 1.2em;
+    border-radius: $ruler * 20;
+    padding: $ruler;
+    background-color: var(--color-bg);
+    text-shadow: 1px 1px 0 var(--color-white);
+
+    @media only screen and (max-width: 600px) {
+      font-size: 1em;
+      border-radius: $ruler * 3;
+      padding: $ruler $ruler / 3;
+    }
+  }
+}
+input {
+  padding: var(--padding) 30px;
+  box-shadow: inset 2px 2px 5px var(--color-shadow),
+    inset -5px -5px 10px var(--color-white);
+  box-sizing: border-box;
+  transition: 0.2s ease-in-out;
+
+  &:focus {
+    box-shadow: inset 1px 1px 2px var(--color-shadow),
+      inset -1px -1px 2px var(--color-white);
+  }
+
+  // remove arrows from inpus
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-
-  /* Firefox */
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
+}
+.result,
+.red {
+  color: var(--color-red);
 }
 
-.segment {
-  font-size: 1.1em;
-  text-align: center;
-  h1 {
-    margin-top: 0;
-  }
-}
-
-button,
-input {
-  text-align: center;
-  font-weight: bolder;
-  border: 0;
-  outline: 0;
-  font-size: 1.2em;
-  border-radius: $ruler * 20;
-  padding: $ruler;
-  background-color: $color-bg;
-  text-shadow: 1px 1px 0 $color-white;
-}
-
-label {
-  display: block;
-  margin-bottom: $ruler * 1;
-  width: 100%;
-}
-
-input {
-  margin-right: $ruler/2;
-  box-shadow: inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
-  width: 100%;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-  appearance: none;
-  -webkit-appearance: none;
-
-  &:focus {
-    box-shadow: inset 1px 1px 2px $color-shadow,
-      inset -1px -1px 2px $color-white;
-  }
+.input,
+.output {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
-  color: #61677c;
+  width: 100%;
+  padding: 35px 0;
+  color: var(--font-color);
   font-weight: bold;
-  box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow;
+  box-shadow: -5px -5px 20px var(--color-white),
+    5px 5px 20px var(--color-shadow);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
-  margin-bottom: 1em;
 
   &:hover {
-    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+    box-shadow: -2px -2px 5px var(--color-white),
+      2px 2px 5px var(--color-shadow);
   }
 
   &:active {
-    box-shadow: inset 1px 1px 2px $color-shadow,
-      inset -1px -1px 2px $color-white;
-  }
-
-  &.unit {
-    border-radius: $ruler/2;
-    line-height: 0;
-    width: $ruler * 3;
-    height: $ruler * 3;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 $ruler/2;
-    font-size: $ruler * 1.2;
-  }
-
-  &.black {
-    display: block;
-    width: 100%;
-    color: #747474;
-  }
-  &.red {
-    display: block;
-    width: 100%;
-    color: $color-red;
+    box-shadow: inset 1px 1px 2px var(--color-shadow),
+      inset -1px -1px 2px var(--color-white);
   }
 }
 
-.input-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+// night mode switch button
+.toggleWrapper {
+  overflow: hidden;
 
-  label {
-    margin: 0;
-    flex: 1;
+  input {
+    position: absolute;
+    left: -99em;
+  }
+  .toggle {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 50px;
+    background-color: #83d8ff;
+    border-radius: 90px - 6;
+    transition: background-color 200ms
+      cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    & {
+      .toggle_handler {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        top: 3px;
+        left: 3px;
+        width: 50px - 6;
+        height: 50px - 6;
+        background-color: #ffcf96;
+        border-radius: 50px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transform: rotate(-45deg);
+
+        .crater {
+          position: absolute;
+          background-color: #e8cda5;
+          opacity: 0;
+          transition: opacity 200ms ease-in-out;
+          border-radius: 100%;
+        }
+
+        .crater--1 {
+          top: 18px;
+          left: 10px;
+          width: 4px;
+          height: 4px;
+        }
+
+        .crater--2 {
+          top: 28px;
+          left: 22px;
+          width: 6px;
+          height: 6px;
+        }
+
+        .crater--3 {
+          top: 10px;
+          left: 25px;
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      .star {
+        position: absolute;
+        background-color: #ffffff;
+        transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        border-radius: 50%;
+      }
+
+      .star--1 {
+        top: 10px;
+        left: 35px;
+        z-index: 0;
+        width: 30px;
+        height: 3px;
+      }
+
+      .star--2 {
+        top: 18px;
+        left: 28px;
+        z-index: 1;
+        width: 30px;
+        height: 3px;
+      }
+
+      .star--3 {
+        top: 27px;
+        left: 40px;
+        z-index: 0;
+        width: 30px;
+        height: 3px;
+      }
+
+      .star--4,
+      .star--5,
+      .star--6 {
+        opacity: 0;
+        transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+
+      .star--4 {
+        top: 16px;
+        left: 11px;
+        z-index: 0;
+        width: 2px;
+        height: 2px;
+        transform: translate3d(3px, 0, 0);
+      }
+
+      .star--5 {
+        top: 32px;
+        left: 17px;
+        z-index: 0;
+        width: 3px;
+        height: 3px;
+        transform: translate3d(3px, 0, 0);
+      }
+
+      .star--6 {
+        top: 36px;
+        left: 28px;
+        z-index: 0;
+        width: 2px;
+        height: 2px;
+        transform: translate3d(3px, 0, 0);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    transform: scale(0.8);
   }
 }
 
-.red {
-  color: $color-red;
-}
+[type='checkbox']:checked {
+  + .toggle {
+    background-color: #749dd6;
 
-/*Simple css to style it like a toggle switch
-.theme-switch-wrapper {
-  margin: 0;
-  position: absolute;
-  left: 40%;
-}
-.theme-switch {
-  display: inline-block;
-  height: 34px;
-  position: relative;
-  width: 60px;
-}
+    &:before {
+      color: #749ed7;
+    }
 
-.theme-switch input {
-  display: none;
-}
+    &:after {
+      color: #ffffff;
+    }
+    .calc-container {
+      background-color: red;
+    }
+    .toggle_handler {
+      background-color: #ffe5b5;
+      transform: translate3d(40px, 0, 0) rotate(0);
 
-.slider {
-  background-color: #ccc;
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: 0.4s;
-}
+      .crater {
+        opacity: 1;
+      }
+    }
 
-.slider:before {
-  background-color: #fff;
-  bottom: 4px;
-  content: '';
-  height: 26px;
-  left: 4px;
-  position: absolute;
-  transition: 0.4s;
-  width: 26px;
-}
+    @keyframes randomMove {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+      0% {
+        opacity: 0;
+      }
+    }
 
-input:checked + .slider {
-  background-color: #66bb6a;
-}
+    .star--1,
+    .star--2,
+    .star--3,
+    .star--4,
+    .star--5,
+    .star--6 {
+      animation: randomMove 3s infinite ease-in-out alternate-reverse;
+    }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
+    .star--1 {
+      width: 2px;
+      height: 2px;
+      animation-delay: 2s;
+    }
 
-.slider.round {
-  border-radius: 34px;
-}
+    .star--2 {
+      width: 4px;
+      height: 4px;
+      transform: translate3d(-7px, 0, 0);
+      animation-delay: 8s;
+    }
 
-.slider.round:before {
-  border-radius: 50%;
+    .star--3 {
+      width: 2px;
+      height: 2px;
+      transform: translate3d(-7px, 0, 0);
+      animation-delay: 5s;
+    }
+
+    .star--4,
+    .star--5,
+    .star--6 {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    .star--4 {
+      transition: all 300ms 200ms
+        cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      animation-delay: 12s;
+    }
+    .star--5 {
+      transition: all 300ms 300ms
+        cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      animation-delay: 9s;
+    }
+    .star--6 {
+      transition: all 300ms 400ms
+        cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      animation-delay: 1s;
+    }
+  }
 }
-*/

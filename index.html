@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>حاسبة النسبة</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico" />
@@ -20,54 +23,73 @@
     <meta name="theme-color" content="#fff" />
   </head>
   <body>
-    <form>
-      <label>
-        <input
-          type="number"
-          placeholder="النسبة"
-          id="percent"
-          maxlength="2"
-          autocomplete="off"
-        />
+    <div class="toggleWrapper">
+      <input name="theme" type="checkbox" class="dn" id="dn" />
+      <label for="dn" class="toggle">
+        <span class="toggle_handler">
+          <span class="crater crater--1"></span>
+          <span class="crater crater--2"></span>
+          <span class="crater crater--3"></span>
+        </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
       </label>
-      <label>
-        <input
-          type="number"
-          placeholder="القيمة"
-          id="amount"
-          maxlength="4"
-          autocomplete="off"
-        />
-      </label>
-      <button class="red" id="calcBt" type="button">احسب</button>
-      <button class="black" id="deleteBt" type="reset">امسح</button>
-      <label>
-        <input
-          type="number"
-          class="result red"
-          placeholder="المطلوب من العميل"
-          id="agentResult"
-          value=""
-          readonly
-        />
-      </label>
-      <label>
-        <input
-          type="number"
-          class="result red"
-          placeholder="قيمة التبديل للعميل"
-          id="exchangeAmount"
-          value=""
-          readonly
-        />
-      </label>
-      <!-- <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>
-      </div> -->
-    </form>
+    </div>
+    <div class="calc-container">
+      <form>
+        <div class="input">
+          <label>
+            <input
+              type="number"
+              placeholder="النسبة"
+              id="percent"
+              maxlength="2"
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            <input
+              type="number"
+              placeholder="القيمة"
+              id="amount"
+              maxlength="4"
+              autocomplete="off"
+            />
+          </label>
+          <button class="red" id="calcBt" type="button">احسب</button>
+        </div>
+        <div class="output">
+          <button class="black" id="deleteBt" type="reset">
+            امسح
+          </button>
+          <label>
+            <input
+              type="number"
+              class="result red"
+              placeholder="المطلوب من العميل"
+              id="agentResult"
+              value=""
+              readonly
+            />
+          </label>
+          <label>
+            <input
+              type="number"
+              class="result red"
+              placeholder="قيمة التبديل للعميل"
+              id="exchangeAmount"
+              value=""
+              readonly
+            />
+          </label>
+        </div>
+      </form>
+    </div>
+    <script src="./dark-mode.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
