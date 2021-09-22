@@ -20,8 +20,6 @@ let percent = document.getElementById('percent'),
 percent.focus();
 
 function calc() {
-  console.log('calc cliced');
-
   //calc the percent neded from the Agent
   let agentPays = ((Amount.value / 100) * percent.value).toFixed(2);
   agentResult.value = agentPays;
